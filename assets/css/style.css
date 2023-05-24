@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+body {
+    background-color: rgb(191, 181, 242);
+    font-family: 'Courier New', sans-serif;
+    font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+}
+
+img {
+    height: 10rem;
+}
+
+.btn.btn-primary {
+    background-color: rgb(101, 88, 174);
+    border: rgb(101, 88, 174);
+}
+
+.btn.btn-primary:hover {
+    background-color: rgb(81, 71, 141);
+    border: rgb(82, 72, 142);
+}
+
+@media screen and (max-width: 768px) {
+    img {
+        height: 4rem;
+    }
+}
+
+.game {
+    margin-top: 50px;
+}
+
+.choice {
+    margin-top: 10px;
+}
+
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.win-modal {
+    background-color: #52c41a;
+}
+
+.lose-modal {
+    background-color: #ff4d4f;
+}
+
+.draw-modal {
+    background-color: #1890ff;
+}
