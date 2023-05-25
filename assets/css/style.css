@@ -34,6 +34,11 @@ img {
     img {
         height: 4rem;
     }
+
+    .gif {
+        max-width: 100%;
+        height: auto;
+    }
 }
 
 .game {
@@ -42,6 +47,11 @@ img {
 
 .choice {
     margin-top: 10px;
+}
+
+.gif {
+    max-width: 100%;
+    height: auto;
 }
 
 .modal {
@@ -58,6 +68,7 @@ img {
 }
 
 .modal-content {
+    width: 60%;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -69,9 +80,10 @@ img {
 }
 
 .lose-modal {
-    background-color: #ff4d4f;
+    background-color: #eb6366;
 }
 
 .draw-modal {
     background-color: #1890ff;
 }
+

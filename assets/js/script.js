@@ -4,7 +4,6 @@ const computerScoreElement = document.getElementById('computer-score');
 const ralliesElement = document.getElementById('rallies');
 const computerChoiceImg = document.getElementById('computer-choice-img');
 const playerChoiceImg = document.getElementById('player-choice-img');
-const confettiContainer = document.getElementById('confetti-container');
 
 let playerScore = 0;
 let computerScore = 0;
@@ -15,6 +14,10 @@ choices.forEach(choice => {
 });
 
 function playGame(e) {
+  if (rallies > 10) {
+    return; // Exit the function if 10 rallies have already taken place
+  }
+
   const playerChoice = e.target.id;
   const computerChoice = getComputerChoice();
 
@@ -65,17 +68,20 @@ function updateScores(result) {
 function endGame() {
   let message;
   let modalClass;
+  let gifPath;
 
   if (playerScore > computerScore) {
     message = 'Congratulations! You win the game!';
     modalClass = 'win-modal';
-    showConfetti();
+    gifPath = './assets/images/win.gif';
   } else if (playerScore < computerScore) {
-    message = 'Sorry! You lose the game.';
+    message = 'Sorry! Better Luck Next Time.';
     modalClass = 'lose-modal';
+    gifPath = './assets/images/lost.gif';
   } else {
     message = 'The game ends in a draw.';
     modalClass = 'draw-modal';
+    gifPath = './assets/images/draw.gif';
   }
 
   const modal = document.createElement('div');
@@ -88,10 +94,14 @@ function endGame() {
   messageElement.textContent = message;
   modalContent.appendChild(messageElement);
 
+  const gifElement = document.createElement('img');
+  gifElement.src = gifPath;
+  gifElement.classList.add('gif');
+  modalContent.appendChild(gifElement);
+
   modal.appendChild(modalContent);
   document.body.appendChild(modal);
 
-  // Reset scores after a delay
   setTimeout(resetScores, 2000);
 }
 
@@ -122,20 +132,5 @@ function displayChoices(playerChoice, computerChoice) {
 }
 
 function getImagePath(choice) {
-  // Assuming you have image files named 'stone.png', 'paper.png', and 'scissors.png' in the same directory
-  return `../assets/images/${choice}.jpg`;
-}
-
-function showConfetti() {
-  const confettiColors = ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56'];
-
-  for (let i = 0; i < 100; i++) {
-    const confetti = document.createElement('div');
-    confetti.classList.add('confetti');
-    confetti.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
-    confetti.style.left = `${Math.random() * 100}%`;
-    confetti.style.animationDelay = `${Math.random() * 3}s`;
-
-    confettiContainer.appendChild(confetti);
-  }
+  return `./assets/images/${choice}.jpg`;
 }
